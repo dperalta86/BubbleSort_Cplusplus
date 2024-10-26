@@ -31,6 +31,8 @@ int main()
 {
     NodoSE *lista1= NULL;
     int i;
+    
+    //Cargo una lista con datos para prueba	
     for (i=0;i<=50;i++)
     {
         if (i%3)
@@ -45,23 +47,23 @@ int main()
     return 0;
 }
 
-void InsertarSiguiente (NodoSE  *&n, int x)
+void InsertarSiguiente (NodoSE*& n, int x)
 {
-    NodoSE *nuevo= new NodoSE();
+    NodoSE* nuevo= new NodoSE();
     nuevo->info=x;
     if (n!=NULL)
     {
-        nuevo->sgte= n->sgte;
+        nuevo->sgte = n->sgte;
         n->sgte = nuevo;
     }
     else
     {
-        nuevo->sgte= n;
-        n= nuevo;
+        nuevo->sgte = n;
+        n = nuevo;
     }
 }
 
-NodoSE *ObtenerUltimo(NodoSE * p)
+NodoSE* ObtenerUltimo(NodoSE* p)
 {
     if (p)
     {
@@ -74,12 +76,12 @@ NodoSE *ObtenerUltimo(NodoSE * p)
 
 }
 
-void InsertarAlFinal (NodoSE  *&n, int x)
+void InsertarAlFinal (NodoSE*& n, int x)
 {
-    NodoSE *nuevo= new NodoSE();
-    NodoSE *ultimo= NULL;
-    nuevo->info=x;
-    nuevo->sgte= NULL;
+    NodoSE* nuevo = new NodoSE();
+    NodoSE* ultimo = NULL;
+    nuevo->info = x;
+    nuevo->sgte = NULL;
 	if (n!=NULL)
     {
 
@@ -88,25 +90,25 @@ void InsertarAlFinal (NodoSE  *&n, int x)
     }
     else
     {
-        n= nuevo;
+        n = nuevo;
     }
 }
 
-void BorrarSiguiente(NodoSE  *n)
+void BorrarSiguiente(NodoSE* n)
 {
-    NodoSE  *aborrar = n->sgte;
-    NodoSE  *sgteaborrar;
+    NodoSE* aborrar = n->sgte;
+    NodoSE* sgteaborrar;
     if (aborrar)
-        sgteaborrar= aborrar->sgte;
+        sgteaborrar = aborrar->sgte;
     else
         sgteaborrar = NULL;
     n->sgte = sgteaborrar;
     delete aborrar;
 }
 
-NodoSE* BuscarNodo(NodoSE * raiz, int infobuscada)
+NodoSE* BuscarNodo(NodoSE* raiz, int infobuscada)
 {
-    NodoSE *p=raiz;
+    NodoSE* p=raiz;
     while (p && (p->info != infobuscada))
     {
         p = p->sgte;
@@ -115,9 +117,9 @@ NodoSE* BuscarNodo(NodoSE * raiz, int infobuscada)
 }
 
 
-NodoSE* BuscarNodoAnterior(NodoSE * raiz, NodoSE * anterior_a)
+NodoSE* BuscarNodoAnterior(NodoSE* raiz, NodoSE* anterior_a)
 {
-    NodoSE *p =NULL;
+    NodoSE* p =NULL;
     if (raiz != anterior_a)
     {
         p = raiz;
@@ -144,7 +146,7 @@ void borrarNodo(NodoSE*& raiz, NodoSE* aborrar)
         }
         else
         {
-            NodoSE *x = BuscarNodoAnterior(raiz,aborrar);
+            NodoSE* x = BuscarNodoAnterior(raiz,aborrar);
             BorrarSiguiente(x);
         }
     }
@@ -161,7 +163,7 @@ void MostrarLista(NodoSE* lista)
     cout << endl;
 }
 
-int ContarNodos(NodoSE *lista)
+int ContarNodos(NodoSE* lista)
 {
     int cont=0;
     while (lista)
@@ -177,9 +179,9 @@ int ContarNodos(NodoSE *lista)
 void burbujaListas(NodoSE*& lista)
 {
     int n,i,j;
-    NodoSE *aux;
-    NodoSE *anterior;
-    NodoSE *proximo;
+    NodoSE* aux;
+    NodoSE* anterior;
+    NodoSE* proximo;
     bool inter; //Para ver si hubo intercambio  o no
     n= ContarNodos(lista);
     for (i=0;i<=n-2;i++)
